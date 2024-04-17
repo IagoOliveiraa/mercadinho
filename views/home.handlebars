@@ -1,1 +1,25 @@
-<h1>Bem vindo a home</h1>
+<h1 class="text-primary mt-4 mb-4 fs-7">Bem vindo a home</h1>
+
+<form action="/listas/insertProdutos" method="post">
+    <div class="form-group mb-3">
+        <label for="Produto">Produto</label>
+        <input type="text" class="control" id="Produto" name="Produto">
+    </div>
+
+    <div class="form-group mb-3">
+        <label class="Preco">Preço</label>
+        <input type="number" class="control" id="Preco" name="Preco">
+    </div>
+
+    <div  class="form-group mb-3">
+        <label class="Descricao mb-3">Descrição
+            <input type="text" class="control" id="Descricao" name="Descricao"></label>
+        </label>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-info">Enviar</button>
+        <button type="reset" class="btn btn-dark">Limpar</button>
+    </div>
+
+</form>

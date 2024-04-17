@@ -1,5 +1,20 @@
-<h1>Listas</h1>
+<h1 class="text-danger mt-4 mb-4 fs-4">Listas</h1>
+<a href="/" class="mb-4 d-block link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">voltar para home</a>
 
-{{#each lista}}
-    {{this.Produto}}
-{{/each}}
+<table class="table table-striped border">
+    <tr>
+        <th>ID</th>
+        <th>produto</th>
+        <th>preço</th>
+        <th>descrição</th>
+    </tr>
+
+    {{#each lista}}
+    <tr>
+        <td>#{{this.produtoID}}</td>
+        <td>#{{this.Produto}}</td>
+        <td>#{{this.Preco}}</td>
+        <td>#{{this.Descricao}}</td>
+    </tr>
+    {{/each}}
+</table>
