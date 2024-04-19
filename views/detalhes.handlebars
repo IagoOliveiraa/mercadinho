@@ -1,0 +1,18 @@
+<h1>Detalhes</h1>
+
+<div class="card co-8">
+    <div class="card-boby ">
+    <h5 class="card-tittle">{{Detalhes.Produto}}</h5>
+    <h6 class="card-subtittle mb-6 text-body-secondary">{{Detalhes.Preco}}</h6>
+    <strong class="card-tittle">{{Detalhes.Descricao}}</strong>
+
+        <form action="/lista/remove/{{Detalhes.produtoID}}" method="post">
+            <input type="submit" name="produtoID" value="Remover" class="btn danger">
+        </form>
+
+    </div>
+
+</div>
+
+
+

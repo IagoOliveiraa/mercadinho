@@ -26,23 +26,21 @@ app.get('/', (req, res) => {
     res.render('home')//renderizando a home
 });
 
-//listando os produtos 
-app.get('/lista', (req, res) => {
-    const sql = 'SELECT * FROM Produtos';
-    //função de conexao MySQL
+//listando produtos
+app.get("/lista", (req, res) => {
+    const sql = "SELECT * from produtos"
+  
     conn.query(sql, function (err, data) {
-        if (err) {
-            console.log(err);
-            return;
-        }
-
-        const lista = data;
-        res.render('listas', { lista })
-
-
-    })
-
-});
+      if (err) {
+        console.log(err);
+        return;
+      }
+  
+      const lista = data;
+      //console.log(lista);
+      res.render("listas", { lista })
+    });
+  });
 
 //cadastrando
 app.post("/listas/insertProdutos", (req, res) => {
@@ -52,16 +50,40 @@ app.post("/listas/insertProdutos", (req, res) => {
 
     //query do sql para cadastro
     const sql = `INSERT INTO produtos(Produto, Preco, Descricao) values ('${produto}', ${preco},'${descricao}')`
+  
+  
+})
 
-    conn.query(sql, function (err) {
-        if (err) {
-            console.log('erro imediato', err)
-            return false;
+//listando e buscando
+app.get('/lista/:id', (req,res)=>{
+    const produtoID = req.params.produtoID;
+    const sql = `SELECT * FROM Produtos WHERE produtoID=${produtoID}`;
+    conn.query(sql, function(err, data){
+        if(err){
+            console.log(err)
+          
         }
-        res.redirect("/lista");
+        const Detalhes = data[0];
+        res.render("detalhes", { Detalhes }) 
+    })
+
+});
+
+
+//removendo itens
+app.post('/lista/remove/:id', (res,req)=>{
+    const produtoID = req.params.produtoID;
+    
+    const sql = `DELETE FROM Produtos WHERE produtoID=${produtoID}`;
+    conn.query(sql ,function(err){
+        if(err)(
+            console.log(err)
+        )
+        res.redirect ('/lista')
     });
 
-})
+});
+
 
 //conectando com banco de dados 
 const conn = mysql2.createConnection({
